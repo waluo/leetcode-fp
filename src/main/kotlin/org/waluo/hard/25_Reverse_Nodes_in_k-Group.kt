@@ -1,12 +1,11 @@
 package org.waluo.hard
 
+import org.waluo.ListNode
+
 /**
  * waluo
  * 2019-05-14.
  */
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
-}
 
 fun reverseKGroup(head: ListNode?, k: Int): ListNode? {
     val pair = head.reverse(k)
