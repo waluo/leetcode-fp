@@ -13,7 +13,7 @@ class ListNode(var `val`: Int) {
     var next: ListNode? = null
 }
 class Memo<K, V> : (K) -> V {
-    val cache: MutableMap<K, V> = mutableMapOf()
+    private val cache: MutableMap<K, V> = mutableMapOf()
     lateinit var f: (K) -> V
     override fun invoke(key: K): V {
         val v = cache[key] ?: f(key)
