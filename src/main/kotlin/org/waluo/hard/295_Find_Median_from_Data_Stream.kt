@@ -4,7 +4,7 @@ import java.util.*
 import kotlin.math.absoluteValue
 
 class MedianFinder {
-    private val maxHeap = PriorityQueue<Int>(compareByDescending { it })
+    private val maxHeap = PriorityQueue<Int>(reverseOrder())
         .apply { this.add(Int.MIN_VALUE) }
     private val minHeap = PriorityQueue<Int>()
         .apply { this.add(Int.MAX_VALUE) }
