@@ -1,14 +1,15 @@
 package org.waluo.hard
 
 import org.waluo.Memo
+import org.waluo.Memo2
 
 /**
  * waluo
  * 2019-06-08.
  */
 fun wordBreak(s: String, wordDict: List<String>): List<String> {
-    val wordBreakMemo = Memo<String, List<String>>()
-    wordBreakMemo.f = { str ->
+    lateinit var wordBreakMemo: Memo2<String, List<String>>
+    wordBreakMemo = Memo2{ str ->
         when {
             str.isBlank() -> listOf("")
             else -> wordDict.fold(emptyList()) { acc, c ->

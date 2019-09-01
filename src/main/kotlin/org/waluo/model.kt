@@ -21,3 +21,12 @@ class Memo<K, V> : (K) -> V {
         return v
     }
 }
+
+class Memo2<K, V>(val f: (K) -> V) : (K) -> V {
+    private val cache: MutableMap<K, V> = mutableMapOf()
+    override fun invoke(key: K): V {
+        val v = cache[key] ?: f(key)
+        cache.putIfAbsent(key, v)
+        return v
+    }
+}
