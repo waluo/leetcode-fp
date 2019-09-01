@@ -13,7 +13,7 @@ class Solution124 {
         val (leftRoot, leftPath) = maxRootAndPathSum(root.left)
         val (rightRoot, rightPath) = maxRootAndPathSum(root.right)
         val rootSum = maxOf(leftRoot, rightRoot, 0) + root.`val`
-        val rootPath = maxOf(leftRoot, 0) + root.`val` +  maxOf(rightRoot, 0)
-        return rootSum to maxOf(rootPath, leftPath, rightPath)
+        val pathSum = maxOf(leftRoot, 0) + root.`val` +  maxOf(rightRoot, 0)
+        return rootSum to maxOf(pathSum, leftPath, rightPath)
     }
 }
