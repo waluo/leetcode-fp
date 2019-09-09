@@ -19,8 +19,23 @@ class Solution84 {
         }
     }
 
+    fun largestRectangleArea2(heights: IntArray): Int {
+        val stack = IntArray(heights.size)
+        var stackIndex = -1
+        var max = 0
+        for (index in 0..heights.size) {
+            while (stackIndex > -1 && (index == heights.size || heights[stack[stackIndex]] > heights[index])) {
+                val h = heights[stack[stackIndex--]]
+                val l = if(stackIndex > -1) { stack[stackIndex] } else -1
+                max = max.coerceAtLeast(h * (index - l - 1))
+            }
+            stack[++stackIndex] = index
+        }
+        return max
+    }
+
     @Test
     fun test() {
-        Assertions.assertEquals(largestRectangleArea(intArrayOf(2, 1, 5, 6, 2, 3)), 10)
+        Assertions.assertEquals(largestRectangleArea2(intArrayOf(2, 1, 5, 6, 2, 3)), 10)
     }
 }
