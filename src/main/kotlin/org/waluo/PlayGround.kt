@@ -17,17 +17,4 @@ fun reverse(list: ListNode?): ListNode? {
 }
 
 fun main() {
-
-
-    Files.find(Paths.get("."), 10, BiPredicate{ path: Path, _ ->
-        val name = path.fileName.toString()
-        name.endsWith(".kt") && name.contains("_")
-    }).toList().forEach {
-        val split = it.fileName.toString().split("_")
-
-        val newPath = Paths.get(it.parent.toString(), split[0] + ". " + split.drop(1).joinToString(separator = " "))
-        Files.copy(it, newPath)
-        Files.delete(it)
-    }
-
 }
