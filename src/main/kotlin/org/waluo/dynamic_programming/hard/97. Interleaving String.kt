@@ -2,7 +2,7 @@ package org.waluo.dynamic_programming.hard
 
 import org.junit.jupiter.api.Test
 
-class Solution {
+class Solution97 {
     fun isInterleave(s1: String, s2: String, s3: String): Boolean {
         if (s1.length + s2.length != s3.length) return false
         if (s3.isEmpty()) return true
