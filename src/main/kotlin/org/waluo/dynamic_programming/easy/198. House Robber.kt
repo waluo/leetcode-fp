@@ -14,16 +14,15 @@ class Solution198 {
     }
 
     fun robDP(nums: IntArray): Int {
-        val memo = IntArray(nums.size) { -1 }
-        var answer = 0
-        for (i in nums.indices) {
-            if (i == 0 || i == 1) memo[i] = nums[i]
-            if (i == 2) memo[i] = nums[i] + memo[0]
-            if (i > 2) {
-                memo[i] = maxOf(nums[i] + memo[i - 2], nums[i] + memo[i - 3])
+        if (nums.isEmpty()) return 0
+        val dp = IntArray(nums.size)
+        nums.indices.forEach { i ->
+            dp[i] = when {
+                i < 2 -> nums[i]
+                i == 2 -> nums[i] + nums[i - 2]
+                else -> maxOf(dp[i - 2], dp[i - 3]) + nums[i]
             }
-            answer = maxOf(answer, memo[i])
         }
-        return answer
+        return dp.takeLast(2).max() ?: 0
     }
 }
