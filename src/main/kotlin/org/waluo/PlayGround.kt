@@ -61,25 +61,6 @@ fun nonDivisibleSubset(k: Int, s: Array<Int>): Int {
     return count
 }
 
-fun load(): Sequence<String> {
-    val sc = Scanner(System.`in`)
-    return sequence {
-        while (sc.hasNext()) {
-            yield(sc.nextLine())
-        }
-    }
-}
-
-data class Info(
-    val firstName: String,
-    val lastName: String,
-    val email: String,
-    val interests: String,
-    val notes: String,
-    val city: String,
-    val age: String
-)
-
 fun main() {
     csvParser2("Weronika,Zaborska,njkfdsv@dsgfk.sn,\"running\"\", sci-fi\",new,Krakow,25")
         .forEach { println(it) }
@@ -94,7 +75,7 @@ fun csvParser(line: String): MutableList<String> {
             ret.add(str)
         } else {
             buffer += "$str,"
-            if (buffer.toCharArray().filter { it == '"' }.count() % 2 == 0) {
+            if (buffer.filter { it == '"' }.count() % 2 == 0) {
                 ret.add(buffer.drop(1).dropLast(2).replace("\"\"", "\""))
                 buffer = ""
             }
