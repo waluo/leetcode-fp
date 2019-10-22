@@ -12,7 +12,7 @@ class Solution173 {
                 if (i == m - 1 && j == n - 1) continue
                 val fromRight = if (j + 1 < n) minHp[i][j + 1] else Integer.MAX_VALUE
                 val fromBottom = if (i + 1 < m) minHp[i + 1][j] else Integer.MAX_VALUE
-                var minHealth = minOf(fromRight, fromBottom) - dungeon[i][j]
+                val minHealth = minOf(fromRight, fromBottom) - dungeon[i][j]
                 minHp[i][j] = minHealth.coerceAtLeast(1)
             }
         }
