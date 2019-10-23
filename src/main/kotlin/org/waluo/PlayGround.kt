@@ -1,14 +1,6 @@
 package org.waluo
 
 import java.lang.StringBuilder
-import java.nio.file.Files
-import java.nio.file.Path
-import java.nio.file.Paths
-import java.nio.file.attribute.BasicFileAttributes
-import java.util.*
-import java.util.function.BiPredicate
-import kotlin.math.max
-import kotlin.streams.toList
 
 fun reverse(list: ListNode?): ListNode? {
     if (list == null) return null
